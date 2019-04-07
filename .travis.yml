@@ -6,7 +6,7 @@ before_install:
 script:
   - docker run learn-docker npm run test -- --coverage
 deploy:
-  provider: elasticbeanstack
+  provider: elasticbeanstalk
   region: "us-west-1"
   app: "learn-docker"
   env: "LearnDocker-env"
