@@ -5,3 +5,17 @@ before_install:
   - docker build -t learn-docker -f Dockerfile.dev .
 script:
   - docker run learn-docker npm run test -- --coverage
+deploy:
+  provider: elasticbeanstack
+  region: "us-west-1"
+  app: "learn-docker"
+  env: "LearnDocker-env"
+  bucket_name: "elasticbeanstalk-us-west-1-118731282175"
+  bucket_path: "learn-docker"
+  on:
+    branch: "master"
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: 
+      secure: "$AWS_SECRET_KEY"
+
+
